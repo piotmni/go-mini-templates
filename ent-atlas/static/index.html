@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastebin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="/">Pastebin</a></h1>
+        </header>
+
+        <main>
+            <!-- Create paste form -->
+            <section id="create-section" class="card">
+                <h2>New Paste</h2>
+                <form id="paste-form">
+                    <div class="form-group">
+                        <input type="text" id="title" name="title" placeholder="Title (optional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="content" name="content" placeholder="Paste your code or text here..." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="language" name="language">
+                                <option value="plaintext">Plain Text</option>
+                                <option value="go">Go</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="java">Java</option>
+                                <option value="c">C</option>
+                                <option value="cpp">C++</option>
+                                <option value="rust">Rust</option>
+                                <option value="sql">SQL</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
+                                <option value="json">JSON</option>
+                                <option value="yaml">YAML</option>
+                                <option value="markdown">Markdown</option>
+                                <option value="bash">Bash</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="expires" name="expires">
+                                <option value="0">Never</option>
+                                <option value="10">10 minutes</option>
+                                <option value="60">1 hour</option>
+                                <option value="1440">1 day</option>
+                                <option value="10080">1 week</option>
+                                <option value="43200">1 month</option>
+                            </select>
+                        </div>
+                        <div class="form-group checkbox">
+                            <label>
+                                <input type="checkbox" id="is_public" name="is_public" checked>
+                                Public
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Paste</button>
+                </form>
+            </section>
+
+            <!-- View paste section (hidden by default) -->
+            <section id="view-section" class="card hidden">
+                <div class="paste-header">
+                    <h2 id="paste-title">Untitled</h2>
+                    <div class="paste-meta">
+                        <span id="paste-language" class="badge"></span>
+                        <span id="paste-date"></span>
+                    </div>
+                </div>
+                <pre><code id="paste-content"></code></pre>
+                <div class="paste-actions">
+                    <button id="copy-btn" class="btn">Copy</button>
+                    <button id="raw-btn" class="btn">Raw</button>
+                    <a href="/" class="btn">New Paste</a>
+                </div>
+            </section>
+
+            <!-- Recent pastes -->
+            <section id="recent-section" class="card">
+                <h2>Recent Pastes</h2>
+                <ul id="recent-list" class="paste-list">
+                    <li class="loading">Loading...</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Simple Pastebin Clone</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
